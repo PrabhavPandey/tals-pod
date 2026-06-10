@@ -397,7 +397,7 @@ function HostPhoto() {
   const mobile = useIsMobile();
   return (
     <div onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)} style={{ width:"100%", aspectRatio: mobile?"3/2":"3/4", overflow:"hidden", position:"relative" }}>
-      <img src="/prabhav_contact.png" alt="Prabhav Pandey" style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center top", transition:"transform 0.55s ease", display:"block", transform: hov?"scale(1.03)":"scale(1)" }} />
+      <img src="/prabhav_contact.jpg" alt="Prabhav Pandey" style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center top", transition:"transform 0.55s ease", display:"block", transform: hov?"scale(1.03)":"scale(1)" }} />
     </div>
   );
 }
