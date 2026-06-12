@@ -7,7 +7,7 @@ const QUOTE_PORTRAIT= "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 
 const EPISODES = [
   { id:1, guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    color:"#1a2744", accent:"#4a7fd4", tag:"Ep 01", date:"May 2025", description:"How Mesa hires engineers who can think in systems - not just ship features.", duration:"58 min", initials:"VL", image:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
-  { id:2, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 02", date:"Apr 2025", description:"What nobody tells you about hiring your first ten.", duration:"52 min", initials:"PK", image:"/pushpak.png", url:"https://youtu.be/Yn_i3ITNDKE" },
+  { id:2, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 02", date:"Apr 2025", description:"What nobody tells you about hiring your first ten.", duration:"52 min", initials:"PK", image:"/pushpak.png", comingSoon:true },
   { id:3, guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", color:"#1f1a0e", accent:"#c9862a", tag:"Ep 03", date:"Mar 2025", description:"Hiring researchers who can also ship - the impossible ask in deep tech.", duration:"64 min", initials:"SJ", image:"/shub.png" },
 ];
 
@@ -218,15 +218,15 @@ function HeroTile({ tile, index=0 }) {
   };
   const content = (
     <>
-      {tile.img && <img src={tile.img} alt={tile.guest} style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", opacity: h?0.8:0.4, transition:"opacity 0.3s", mixBlendMode:"luminosity" }} />}
+      {tile.img && <img src={tile.img} alt={tile.guest} style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", opacity: h?0.88:0.6, transition:"opacity 0.3s", mixBlendMode:"luminosity" }} />}
       <div style={{ position:"absolute", inset:0, background:"radial-gradient(circle at 70% 30%, "+tile.accent+"26 0%, transparent 65%)" }} />
       <div style={{ position:"absolute", top:mobile?"12px":"14px", left:mobile?"12px":"14px", fontSize:"9px", letterSpacing:"0.16em", textTransform:"uppercase", color: dim?"rgba(232,228,218,0.15)":"rgba(232,228,218,0.5)", fontFamily:"'DM Sans',sans-serif" }}>{tile.tag}</div>
       <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", fontFamily:"'Cormorant Garamond',serif", fontSize: dim?"34px":"50px", fontWeight:300, color: dim?"rgba(232,228,218,0.04)":tile.accent+"3a", pointerEvents:"none", userSelect:"none" }}>{tile.initials}</div>
       <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:mobile?"16px 14px":"20px 18px", background:"linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 75%, transparent 100%)" }}>
         {!dim
           ? <>
-              <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:mobile?"22px":"clamp(22px, 1.9vw, 30px)", color:"#fff", margin:"0 0 5px", lineHeight:1.1, fontWeight:500 }}>{tile.guest}</p>
-              <p style={{ fontSize:mobile?"11px":"12px", color:"rgba(255,255,255,0.78)", margin:0, letterSpacing:"0.03em", fontWeight:500 }}>{tile.role}, <span style={{ color:tile.accent }}>{tile.company}</span></p>
+              <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:mobile?"26px":"clamp(28px, 2.4vw, 38px)", color:"#fff", margin:"0 0 6px", lineHeight:1.05, fontWeight:500 }}>{tile.guest}</p>
+              <p style={{ fontSize:mobile?"12px":"13px", color:"rgba(255,255,255,0.82)", margin:0, letterSpacing:"0.03em", fontWeight:500 }}>{tile.role}, <span style={{ color:tile.accent }}>{tile.company}</span></p>
               {tile.url && <p style={{ fontSize:"9px", color:"rgba(255,255,255,0.55)", margin:"10px 0 0", letterSpacing:"0.12em", textTransform:"uppercase" }}>Watch episode ↗</p>}
             </>
           : <p style={{ fontSize:"10px", color:"rgba(232,228,218,0.18)", margin:0, letterSpacing:"0.1em", textTransform:"uppercase" }}>Coming soon</p>
@@ -252,7 +252,7 @@ function HeroTile({ tile, index=0 }) {
 
 const HERO_TILES = [
   { guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    tag:"Ep 01", bg:"#1a2744", accent:"#4a7fd4", initials:"VL", img:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
-  { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 02", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png", url:"https://youtu.be/Yn_i3ITNDKE" },
+  { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 02", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png", dim:true },
   { guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", tag:"Ep 03", bg:"#1f1a0e", accent:"#c9862a", initials:"SJ", img:"/shub.png" },
   { guest:"?", company:"Coming soon", tag:"Ep 04", bg:"#111", accent:"#444", initials:"?", dim:true },
 ];
@@ -328,7 +328,7 @@ function EpisodeRow({ ep, index=0 }) {
   const [hov, setHov] = useState(false);
   const mobile = useIsMobile();
   return (
-    <motion.article whileInView={{opacity:1,y:0}} initial={{opacity:0,y:28}} viewport={{once:true,margin:"-60px"}} transition={{duration:0.55,delay:index*0.07,ease:[0.25,0.1,0.25,1]}} onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)} style={{ padding:mobile?"1rem":"1.25rem", margin:"0.5rem 0", background:hov?"linear-gradient(145deg, rgba(232,228,218,0.055) 0%, rgba(232,228,218,0.015) 100%)":"rgba(232,228,218,0.018)", border:"1px solid "+(hov?"rgba(232,228,218,0.09)":"rgba(232,228,218,0.045)"), borderRadius:mobile?"14px":"18px", display:"grid", gridTemplateColumns:mobile?"1fr":"240px minmax(0, 1fr)", alignItems:"stretch", gap:mobile?"1.4rem":"2.25rem", transition:"all 0.3s ease", overflow:"hidden" }}>
+    <motion.article whileInView={{opacity:1,y:0}} initial={{opacity:0,y:28}} viewport={{once:true,margin:"-60px"}} transition={{duration:0.55,delay:index*0.07,ease:[0.25,0.1,0.25,1]}} onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)} style={{ opacity: ep.comingSoon ? 0.45 : 1, padding:mobile?"1rem":"1.25rem", margin:"0.5rem 0", background:hov?"linear-gradient(145deg, rgba(232,228,218,0.055) 0%, rgba(232,228,218,0.015) 100%)":"rgba(232,228,218,0.018)", border:"1px solid "+(hov?"rgba(232,228,218,0.09)":"rgba(232,228,218,0.045)"), borderRadius:mobile?"14px":"18px", display:"grid", gridTemplateColumns:mobile?"1fr":"240px minmax(0, 1fr)", alignItems:"stretch", gap:mobile?"1.4rem":"2.25rem", transition:"all 0.3s ease", overflow:"hidden" }}>
       <div style={{ position:"relative", minHeight:mobile?"210px":"220px", borderRadius:"12px", overflow:"hidden", background:ep.color }}>
         {ep.image
           ? <img src={ep.image} alt={`${ep.guest} on TAL's Pod`} style={{ width:"100%", height:"100%", position:"absolute", inset:0, objectFit:"cover", filter:"grayscale(100%) contrast(1.05)", opacity:hov?0.82:0.62, transform:hov?"scale(1.025)":"scale(1)", transition:"opacity 0.35s ease, transform 0.5s ease" }} />
