@@ -221,7 +221,7 @@ function HeroTile({ tile, index=0 }) {
       {tile.img && <img src={tile.img} alt={tile.guest} style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", opacity: h?0.88:0.6, transition:"opacity 0.3s", mixBlendMode:"luminosity" }} />}
       <div style={{ position:"absolute", inset:0, background:"radial-gradient(circle at 70% 30%, "+tile.accent+"26 0%, transparent 65%)" }} />
       <div style={{ position:"absolute", top:mobile?"12px":"14px", left:mobile?"12px":"14px", fontSize:"9px", letterSpacing:"0.16em", textTransform:"uppercase", color: dim?"rgba(232,228,218,0.15)":"rgba(232,228,218,0.5)", fontFamily:"'DM Sans',sans-serif" }}>{tile.tag}</div>
-      <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", fontFamily:"'Cormorant Garamond',serif", fontSize: dim?"34px":"50px", fontWeight:300, color: dim?"rgba(232,228,218,0.04)":tile.accent+"3a", pointerEvents:"none", userSelect:"none" }}>{tile.initials}</div>
+      {!tile.img && <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", fontFamily:"'Cormorant Garamond',serif", fontSize: dim?"34px":"50px", fontWeight:300, color: dim?"rgba(232,228,218,0.04)":tile.accent+"3a", pointerEvents:"none", userSelect:"none" }}>{tile.initials}</div>}
       <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:mobile?"16px 14px":"20px 18px", background:"linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 75%, transparent 100%)" }}>
         {!dim
           ? <>
