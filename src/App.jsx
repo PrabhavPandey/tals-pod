@@ -9,6 +9,7 @@ const EPISODES = [
   { id:1, guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    color:"#1a2744", accent:"#4a7fd4", tag:"Ep 01", date:"May 2025", description:"How Mesa hires engineers who can think in systems - not just ship features.", duration:"58 min", initials:"VL", image:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
   { id:2, guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", color:"#1f1a0e", accent:"#c9862a", tag:"Ep 02", date:"Mar 2025", description:"Hiring researchers who can also ship - the impossible ask in deep tech.", duration:"64 min", initials:"SJ", image:"/shub.png" },
   { id:3, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 03", date:"Apr 2025", description:"The view from the VC table — how Peak XV reads founding teams on hiring, and what your first 10 calls actually signal to investors.", duration:"52 min", initials:"PK", image:"/pushpak.png", comingSoon:true },
+  { id:4, guest:"Sunny Shah",    company:"Sarvam",   role:"Head of Engineering", color:"#1a100a", accent:"#d4622a", tag:"Ep 04", date:"Jun 2025", description:"Building AI-native teams from scratch — what changes when your stack doesn't exist yet.", duration:"55 min", initials:"SS", image:"/sunny.jpg", comingSoon:true },
 ];
 
 const BLOG_POSTS = [
@@ -254,7 +255,7 @@ const HERO_TILES = [
   { guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    tag:"Ep 01", bg:"#1a2744", accent:"#4a7fd4", initials:"VL", img:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
   { guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", tag:"Ep 02", bg:"#1f1a0e", accent:"#c9862a", initials:"SJ", img:"/shub.png" },
   { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 03", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png" },
-  { guest:"?", company:"Coming soon", tag:"Ep 04", bg:"#111", accent:"#444", initials:"?", dim:true },
+  { guest:"Sunny Shah",    company:"Sarvam",   role:"Head of Engineering", tag:"Ep 04", bg:"#1a100a", accent:"#d4622a", initials:"SS", img:"/sunny.jpg" },
 ];
 
 function Hero({ setPage }) {
@@ -462,11 +463,12 @@ function AboutPage() {
           <motion.p whileInView={{opacity:1,y:0}} initial={{opacity:0,y:12}} viewport={{once:true}} transition={{duration:0.45}} style={{ fontSize:"11px", letterSpacing:"0.22em", textTransform:"uppercase", color:"rgba(232,228,218,0.35)", marginBottom: mobile?"2rem":"3rem", textAlign:"center" }}>
             real people. real conversations.
           </motion.p>
-          <div style={{ display:"grid", gridTemplateColumns: mobile?"1fr 1fr":"repeat(3,1fr)", gap: mobile?"0.75rem":"1.25rem" }}>
+          <div style={{ display:"grid", gridTemplateColumns: mobile?"1fr 1fr":"repeat(4,1fr)", gap: mobile?"0.75rem":"1.25rem" }}>
             {[
-              { img:"/varun.png",   name:"Varun Limaye",  role:"Founder, Mesa",      accent:"#4a7fd4" },
-              { img:"/pushpak.png", name:"Pushpak Kedia", role:"VP, Peak XV",         accent:"#3a9e72" },
-              { img:"/shub.png",    name:"Shub Jain",     role:"Co-founder, Auquan", accent:"#c9862a" },
+              { img:"/varun.png",   name:"Varun Limaye",  role:"Founder, Mesa",             accent:"#4a7fd4" },
+              { img:"/shub.png",    name:"Shub Jain",     role:"Co-founder, Auquan",        accent:"#c9862a" },
+              { img:"/pushpak.png", name:"Pushpak Kedia", role:"VP, Peak XV",               accent:"#3a9e72" },
+              { img:"/sunny.jpg",   name:"Sunny Shah",    role:"Head of Eng, Sarvam",       accent:"#d4622a" },
             ].map((g,i) => (
               <motion.div key={i} whileInView={{opacity:1,y:0}} initial={{opacity:0,y:28}} viewport={{once:true}} transition={{delay:i*0.12,duration:0.55}} style={{ position:"relative", aspectRatio: mobile?"3/4":"2/3", overflow:"hidden", borderRadius:"10px" }}>
                 <img src={g.img} alt={g.name} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center top", filter:"grayscale(70%) contrast(1.05)", opacity:0.72, display:"block" }} />
