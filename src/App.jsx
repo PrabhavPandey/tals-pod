@@ -7,8 +7,8 @@ const QUOTE_PORTRAIT= "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 
 const EPISODES = [
   { id:1, guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    color:"#1a2744", accent:"#4a7fd4", tag:"Ep 01", date:"May 2025", description:"How Mesa hires engineers who can think in systems - not just ship features.", duration:"58 min", initials:"VL", image:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
-  { id:2, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 02", date:"Apr 2025", description:"The view from the VC table — how Peak XV reads founding teams on hiring, and what your first 10 calls actually signal to investors.", duration:"52 min", initials:"PK", image:"/pushpak.png", comingSoon:true },
-  { id:3, guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", color:"#1f1a0e", accent:"#c9862a", tag:"Ep 03", date:"Mar 2025", description:"Hiring researchers who can also ship - the impossible ask in deep tech.", duration:"64 min", initials:"SJ", image:"/shub.png" },
+  { id:2, guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", color:"#1f1a0e", accent:"#c9862a", tag:"Ep 02", date:"Mar 2025", description:"Hiring researchers who can also ship - the impossible ask in deep tech.", duration:"64 min", initials:"SJ", image:"/shub.png" },
+  { id:3, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 03", date:"Apr 2025", description:"The view from the VC table — how Peak XV reads founding teams on hiring, and what your first 10 calls actually signal to investors.", duration:"52 min", initials:"PK", image:"/pushpak.png", comingSoon:true },
 ];
 
 const BLOG_POSTS = [
@@ -252,8 +252,8 @@ function HeroTile({ tile, index=0 }) {
 
 const HERO_TILES = [
   { guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    tag:"Ep 01", bg:"#1a2744", accent:"#4a7fd4", initials:"VL", img:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
-  { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 02", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png" },
-  { guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", tag:"Ep 03", bg:"#1f1a0e", accent:"#c9862a", initials:"SJ", img:"/shub.png" },
+  { guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", tag:"Ep 02", bg:"#1f1a0e", accent:"#c9862a", initials:"SJ", img:"/shub.png" },
+  { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 03", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png" },
   { guest:"?", company:"Coming soon", tag:"Ep 04", bg:"#111", accent:"#444", initials:"?", dim:true },
 ];
 
