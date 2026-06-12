@@ -7,7 +7,7 @@ const QUOTE_PORTRAIT= "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 
 const EPISODES = [
   { id:1, guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    color:"#1a2744", accent:"#4a7fd4", tag:"Ep 01", date:"May 2025", description:"How Mesa hires engineers who can think in systems - not just ship features.", duration:"58 min", initials:"VL", image:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
-  { id:2, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 02", date:"Apr 2025", description:"What nobody tells you about hiring your first ten.", duration:"52 min", initials:"PK", image:"/pushpak.png", comingSoon:true },
+  { id:2, guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         color:"#12201a", accent:"#3a9e72", tag:"Ep 02", date:"Apr 2025", description:"The view from the VC table — how Peak XV reads founding teams on hiring, and what your first 10 calls actually signal to investors.", duration:"52 min", initials:"PK", image:"/pushpak.png", comingSoon:true },
   { id:3, guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", color:"#1f1a0e", accent:"#c9862a", tag:"Ep 03", date:"Mar 2025", description:"Hiring researchers who can also ship - the impossible ask in deep tech.", duration:"64 min", initials:"SJ", image:"/shub.png" },
 ];
 
@@ -226,7 +226,7 @@ function HeroTile({ tile, index=0 }) {
         {!dim
           ? <>
               <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:mobile?"26px":"clamp(28px, 2.4vw, 38px)", color:"#fff", margin:"0 0 6px", lineHeight:1.05, fontWeight:500 }}>{tile.guest}</p>
-              <p style={{ fontSize:mobile?"12px":"13px", color:"rgba(255,255,255,0.82)", margin:0, letterSpacing:"0.03em", fontWeight:500 }}>{tile.role}, <span style={{ color:tile.accent }}>{tile.company}</span></p>
+              <p style={{ fontSize:mobile?"13px":"16px", color:"rgba(255,255,255,0.88)", margin:0, letterSpacing:"0.02em", fontWeight:500 }}>{tile.role}, <span style={{ color:tile.accent }}>{tile.company}</span></p>
               {tile.url && <p style={{ fontSize:"9px", color:"rgba(255,255,255,0.55)", margin:"10px 0 0", letterSpacing:"0.12em", textTransform:"uppercase" }}>Watch episode ↗</p>}
             </>
           : <p style={{ fontSize:"10px", color:"rgba(232,228,218,0.18)", margin:0, letterSpacing:"0.1em", textTransform:"uppercase" }}>Coming soon</p>
@@ -252,7 +252,7 @@ function HeroTile({ tile, index=0 }) {
 
 const HERO_TILES = [
   { guest:"Varun Limaye",  company:"Mesa",    role:"Founder",    tag:"Ep 01", bg:"#1a2744", accent:"#4a7fd4", initials:"VL", img:"/varun.png", url:"https://youtu.be/u2Q_4uxQrHk?si=4NaE9p_7d0FRhg2i" },
-  { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 02", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png", dim:true },
+  { guest:"Pushpak Kedia", company:"Peak XV", role:"VP",         tag:"Ep 02", bg:"#12201a", accent:"#3a9e72", initials:"PK", img:"/pushpak.png" },
   { guest:"Shub Jain",     company:"Auquan",  role:"Co-founder", tag:"Ep 03", bg:"#1f1a0e", accent:"#c9862a", initials:"SJ", img:"/shub.png" },
   { guest:"?", company:"Coming soon", tag:"Ep 04", bg:"#111", accent:"#444", initials:"?", dim:true },
 ];
@@ -405,32 +405,93 @@ function HostPhoto() {
 function AboutPage() {
   const mobile = useIsMobile();
   return (
-    <section style={{ padding: mobile?"3rem 1.25rem":"6rem 3rem", maxWidth:"1100px", margin:"0 auto", position:"relative", overflow:"hidden" }}>
-      {/* Decorative background number */}
-      <span aria-hidden="true" style={{ position:"absolute", right: mobile?"-20px":"40px", top:"10px", fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"160px":"260px", color:"rgba(232,228,218,0.025)", fontWeight:300, lineHeight:1, userSelect:"none", pointerEvents:"none", letterSpacing:"-0.04em" }}>01</span>
+    <div style={{ overflow:"hidden" }}>
 
-      <motion.div initial={{opacity:0,y:22}} animate={{opacity:1,y:0}} transition={{duration:0.55,ease:[0.25,0.1,0.25,1]}}>
-        <p style={{ fontSize:"11px", letterSpacing:"0.22em", textTransform:"uppercase", color:"rgba(232,228,218,0.45)", marginBottom:"1.25rem", fontWeight:500 }}>About the podcast</p>
-        <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"40px":"58px", fontWeight:300, color:"#e8e4da", margin:"0 0 3.5rem", lineHeight:1.05 }}>Why we're doing this.</h2>
-      </motion.div>
+      {/* Chapter 1 — Opening statement */}
+      <motion.section
+        initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.9}}
+        style={{ position:"relative", overflow:"hidden", padding: mobile?"5rem 1.5rem 4rem":"8rem 5rem 6rem", textAlign:"center", background:"linear-gradient(160deg,#0f0a05 0%,#0b0f1a 55%,#0a0a0a 100%)" }}
+      >
+        <div className="about-glow" />
+        <motion.p initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:0.3,duration:0.5}} style={{ fontSize:"11px", letterSpacing:"0.22em", textTransform:"uppercase", color:"rgba(232,228,218,0.4)", marginBottom:"2rem" }}>about the podcast</motion.p>
+        <motion.h2 initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{delay:0.45,duration:0.8,ease:[0.22,1,0.36,1]}} style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"clamp(38px,11vw,52px)":"clamp(56px,6vw,86px)", fontWeight:300, lineHeight:1.1, color:"#e8e4da", margin:"0 auto 0", maxWidth:"820px" }}>
+          we started this because<br/><em style={{ color:"rgba(232,228,218,0.7)" }}>nobody</em> taught us<br/>how to get hired.
+        </motion.h2>
+      </motion.section>
 
-      {/* Pull quote */}
-      <motion.div whileInView={{opacity:1,x:0}} initial={{opacity:0,x:-20}} viewport={{once:true,margin:"-60px"}} transition={{duration:0.65,ease:[0.22,1,0.36,1]}} style={{ borderLeft:"2px solid rgba(232,228,218,0.12)", paddingLeft: mobile?"1.5rem":"2.5rem", marginBottom: mobile?"2.5rem":"3.5rem", maxWidth:"780px" }}>
-        <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"30px":"52px", fontStyle:"italic", fontWeight:300, color:"#e8e4da", lineHeight:1.2, margin:0 }}>
-          nobody taught us how to get hired.<br/>or negotiate a salary.
+      {/* Chapter 2 — The gap, told as numbers */}
+      <div style={{ background:"#0d0d0d", borderTop:"1px solid rgba(232,228,218,0.04)", borderBottom:"1px solid rgba(232,228,218,0.04)" }}>
+        <div style={{ maxWidth:"960px", margin:"0 auto", padding: mobile?"0":"0 4rem", display:"grid", gridTemplateColumns: mobile?"1fr":"1fr 1fr 1fr" }}>
+          {[
+            { num:"12", label:"years of school" },
+            { num:"4",  label:"years of college" },
+            { num:"0",  label:"classes on comp or culture fit" },
+          ].map((s,i) => (
+            <motion.div key={i} whileInView={{opacity:1,y:0}} initial={{opacity:0,y:18}} viewport={{once:true}} transition={{delay:i*0.1,duration:0.5}} style={{ textAlign:"center", padding: mobile?"2rem 1rem":"2.5rem 1rem", borderRight: (!mobile && i<2)?"1px solid rgba(232,228,218,0.05)":undefined, borderBottom: mobile?"1px solid rgba(232,228,218,0.05)":undefined }}>
+              <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"58px":"76px", fontWeight:300, color:"#e8e4da", lineHeight:1, margin:"0 0 0.5rem" }}>{s.num}</p>
+              <p style={{ fontSize:"11px", letterSpacing:"0.12em", color:"rgba(232,228,218,0.4)", margin:0, textTransform:"uppercase" }}>{s.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Chapter 3 — The story */}
+      <section style={{ maxWidth:"820px", margin:"0 auto", padding: mobile?"4rem 1.5rem":"5rem 4rem" }}>
+        <motion.p whileInView={{opacity:1,y:0}} initial={{opacity:0,y:20}} viewport={{once:true,margin:"-60px"}} transition={{duration:0.6}} style={{ fontSize: mobile?"18px":"21px", color:"rgba(232,228,218,0.65)", lineHeight:1.9, fontWeight:300, marginBottom:"1.75rem" }}>
+          the stuff that actually shapes your career — comp structures, negotiating a raise, what "culture fit" really means at a specific company — is somehow still taboo.
+        </motion.p>
+        <motion.p whileInView={{opacity:1,y:0}} initial={{opacity:0,y:20}} viewport={{once:true,margin:"-60px"}} transition={{duration:0.6,delay:0.1}} style={{ fontSize: mobile?"18px":"21px", color:"rgba(232,228,218,0.65)", lineHeight:1.9, fontWeight:300, marginBottom:"3rem" }}>
+          everyone thinks about it. nobody talks about it.
+        </motion.p>
+
+        {/* Pull quote */}
+        <motion.div whileInView={{opacity:1,x:0}} initial={{opacity:0,x:-24}} viewport={{once:true}} transition={{duration:0.7,ease:[0.22,1,0.36,1]}} style={{ padding: mobile?"1.75rem 1.5rem":"2.5rem 3rem", background:"linear-gradient(135deg,rgba(232,228,218,0.035) 0%,transparent 100%)", borderLeft:"2px solid rgba(232,228,218,0.14)", borderRadius:"0 16px 16px 0", marginBottom:"3rem" }}>
+          <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"26px":"42px", fontStyle:"italic", fontWeight:300, color:"#e8e4da", lineHeight:1.25, margin:0 }}>
+            "the people who've figured it out?<br/>they're the ones doing the hiring."
+          </p>
+        </motion.div>
+
+        <motion.p whileInView={{opacity:1,y:0}} initial={{opacity:0,y:16}} viewport={{once:true}} transition={{duration:0.55}} style={{ fontSize: mobile?"18px":"21px", color:"rgba(232,228,218,0.65)", lineHeight:1.9, fontWeight:300 }}>
+          so we figured we'd just ask them.
+        </motion.p>
+      </section>
+
+      {/* Chapter 4 — The faces */}
+      <section style={{ background:"#0d0d0d", padding: mobile?"3.5rem 1.5rem":"5rem 4rem" }}>
+        <div style={{ maxWidth:"1000px", margin:"0 auto" }}>
+          <motion.p whileInView={{opacity:1,y:0}} initial={{opacity:0,y:12}} viewport={{once:true}} transition={{duration:0.45}} style={{ fontSize:"11px", letterSpacing:"0.22em", textTransform:"uppercase", color:"rgba(232,228,218,0.35)", marginBottom: mobile?"2rem":"3rem", textAlign:"center" }}>
+            real people. real conversations.
+          </motion.p>
+          <div style={{ display:"grid", gridTemplateColumns: mobile?"1fr 1fr":"repeat(3,1fr)", gap: mobile?"0.75rem":"1.25rem" }}>
+            {[
+              { img:"/varun.png",   name:"Varun Limaye",  role:"Founder, Mesa",      accent:"#4a7fd4" },
+              { img:"/pushpak.png", name:"Pushpak Kedia", role:"VP, Peak XV",         accent:"#3a9e72" },
+              { img:"/shub.png",    name:"Shub Jain",     role:"Co-founder, Auquan", accent:"#c9862a" },
+            ].map((g,i) => (
+              <motion.div key={i} whileInView={{opacity:1,y:0}} initial={{opacity:0,y:28}} viewport={{once:true}} transition={{delay:i*0.12,duration:0.55}} style={{ position:"relative", aspectRatio: mobile?"3/4":"2/3", overflow:"hidden", borderRadius:"10px" }}>
+                <img src={g.img} alt={g.name} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center top", filter:"grayscale(70%) contrast(1.05)", opacity:0.72, display:"block" }} />
+                <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.15) 55%,transparent 100%)" }} />
+                <div style={{ position:"absolute", bottom:0, left:0, padding: mobile?"0.9rem":"1.25rem" }}>
+                  <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"17px":"22px", color:"#fff", margin:"0 0 3px", fontWeight:500, lineHeight:1.1 }}>{g.name}</p>
+                  <p style={{ fontSize: mobile?"10px":"12px", color:g.accent, margin:0, fontWeight:500, letterSpacing:"0.02em" }}>{g.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Chapter 5 — Mission close */}
+      <motion.section whileInView={{opacity:1,y:0}} initial={{opacity:0,y:24}} viewport={{once:true}} transition={{duration:0.65,ease:[0.22,1,0.36,1]}} style={{ textAlign:"center", padding: mobile?"4.5rem 1.5rem":"7rem 4rem" }}>
+        <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize: mobile?"clamp(42px,12vw,58px)":"clamp(56px,6vw,84px)", fontWeight:300, color:"#e8e4da", lineHeight:1.1, margin:"0 0 1.5rem" }}>
+          so we just ask them.
+        </h3>
+        <p style={{ fontSize: mobile?"12px":"13px", color:"rgba(232,228,218,0.35)", letterSpacing:"0.16em", textTransform:"uppercase", margin:0 }}>
+          on record. no filter.
         </p>
-      </motion.div>
+      </motion.section>
 
-      {/* Thin rule */}
-      <motion.div whileInView={{scaleX:1,opacity:1}} initial={{scaleX:0,opacity:0}} viewport={{once:true}} transition={{duration:0.7,ease:[0.22,1,0.36,1]}} style={{ height:"1px", background:"linear-gradient(90deg,rgba(232,228,218,0.1) 0%,transparent 100%)", marginBottom: mobile?"2rem":"3rem", transformOrigin:"left" }} />
-
-      {/* Body */}
-      <motion.div whileInView={{opacity:1,y:0}} initial={{opacity:0,y:20}} viewport={{once:true,margin:"-40px"}} transition={{duration:0.55,delay:0.1,ease:[0.25,0.1,0.25,1]}} style={{ display:"grid", gridTemplateColumns: mobile?"1fr":"1fr 1fr", gap: mobile?"1.5rem":"4rem", alignItems:"start" }}>
-        <p style={{ margin:0, fontSize:"17px", color:"rgba(232,228,218,0.7)", lineHeight:1.9, fontWeight:300 }}>12 years of school, 4 years of college — zero classes on how to read a comp structure, negotiate a raise, or figure out what "culture fit" actually means. the stuff that shapes careers is somehow still taboo.</p>
-        <p style={{ margin:0, fontSize:"17px", color:"rgba(232,228,218,0.7)", lineHeight:1.9, fontWeight:300 }}>the people who've figured it out? they're the ones doing the hiring. so we figured we'd just ask them. on record. no filter.</p>
-      </motion.div>
-
-    </section>
+    </div>
   );
 }
 
@@ -560,6 +621,8 @@ button,a{touch-action:manipulation;}
 @keyframes logoSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .logo-img{transition:transform 0.3s ease;}
 .logo-img:hover{animation:logoSpin 1.8s linear infinite;}
+.about-glow{position:absolute;width:700px;height:700px;top:-150px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(201,134,42,0.07) 0%,rgba(74,127,212,0.04) 40%,transparent 70%);pointer-events:none;animation:glowPulse 5s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.25);}}
 `;
 
 export default function TalPod() {
